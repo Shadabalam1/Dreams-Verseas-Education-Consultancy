@@ -367,9 +367,12 @@ p { color: var(--muted); max-width: 62ch; }
   z-index: 900; transition: transform .3s var(--ease), opacity .3s var(--ease);
 }
 .whatsapp-btn { bottom: 24px; background: #25D366; color: var(--white); font-size: 1.5rem; }
+.call-btn { bottom: 90px; background: var(--accent); color: var(--white); }
+.call-btn svg { width: 25px; height: 25px; }
+.call-btn:hover { transform: scale(1.08); }
 .whatsapp-btn svg { width: 28px; height: 28px; }
 .whatsapp-btn:hover { transform: scale(1.08); }
-.back-top { bottom: 90px; background: var(--primary); color: var(--white); opacity: 0; pointer-events: none; }
+.back-top { bottom: 156px; background: var(--primary); color: var(--white); opacity: 0; pointer-events: none; }
 .back-top.show { opacity: 1; pointer-events: auto; }
 .back-top:hover { transform: translateY(-4px); }
 
@@ -395,5 +398,6 @@ p { color: var(--muted); max-width: 62ch; }
   .form-row { grid-template-columns: 1fr; }
   .float-btn { width: 48px; height: 48px; right: 16px; }
   .whatsapp-btn { bottom: 16px; }
-  .back-top { bottom: 76px; }
+  .call-btn { bottom: 76px; }
+  .back-top { bottom: 132px; }
 }

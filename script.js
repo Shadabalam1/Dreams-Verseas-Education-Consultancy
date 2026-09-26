@@ -2,7 +2,7 @@
    CONFIG — replace with real business details
 ===================================================== */
 const CONFIG = {
-  phone: "+91XXXXXXXXXX",
+  phone: "+919117117463",
   whatsapp: "91XXXXXXXXXX",
   email: "riyankainat@gmail.com",
   whatsappMessage: "Hello Dreams Overseas, I would like to know more about studying abroad."
@@ -297,6 +297,9 @@ document.querySelectorAll("#whatsappBtn, #ctaWhatsapp").forEach(btn => {
 });
 const phoneDisplay = document.getElementById("phoneDisplay");
 if (phoneDisplay) phoneDisplay.textContent = CONFIG.phone;
+const callBtn = document.getElementById("callBtn");
+const callNumber = CONFIG.phone.replace(/\D/g, "");
+if (callBtn && callNumber.length >= 7) callBtn.href = `tel:+${callNumber}`;
 
 /* =====================================================
    BACK TO TOP
