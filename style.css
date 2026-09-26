@@ -134,6 +134,7 @@ p { color: var(--muted); max-width: 62ch; }
 }
 .mobile-drawer.open { transform: translateY(0); }
 .mobile-drawer a { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--dark); }
+.mobile-drawer .btn { font-family: 'Inter', sans-serif; font-size: 0.95rem; white-space: nowrap; width: auto; }
 
 /* ===================================================
    6. HERO
