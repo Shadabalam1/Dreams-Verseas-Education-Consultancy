@@ -97,11 +97,21 @@ if (hamburger && drawer) {
   hamburger.addEventListener("click", () => {
     const open = drawer.classList.toggle("open");
     hamburger.setAttribute("aria-expanded", open);
+    document.body.classList.toggle("mobile-open", open);
   });
   drawer.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
     drawer.classList.remove("open");
     hamburger.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("mobile-open");
   }));
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && drawer.classList.contains("open")) {
+      drawer.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("mobile-open");
+      hamburger.focus();
+    }
+  });
 }
 
 /* =====================================================
