@@ -123,14 +123,14 @@ p { color: var(--muted); max-width: 62ch; }
 }
 .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 .header-cta { display: flex; align-items: center; gap: 1.5rem; }
-.hamburger { display: none; flex-direction: column; gap: 5px; width: 26px; z-index: 1001; }
+.hamburger { display: none; position: relative; flex-direction: column; gap: 5px; width: 26px; z-index: 1101; }
 .hamburger span { height: 2px; background: var(--white); transition: all .3s var(--ease); }
 .site-header.scrolled .hamburger span, .mobile-open .hamburger span { background: var(--dark); }
 .mobile-drawer {
   position: fixed; inset: 0; background: var(--background);
   display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 1.8rem;
   padding: 110px 24px 40px; overflow-y: auto;
-  transform: translateY(-100%); transition: transform .4s var(--ease); z-index: 999;
+  transform: translateY(-100%); transition: transform .4s var(--ease); z-index: 1100;
 }
 .mobile-drawer.open { transform: translateY(0); }
 .mobile-drawer a { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--dark); }
