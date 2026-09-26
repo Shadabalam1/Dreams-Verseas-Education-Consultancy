@@ -5,7 +5,7 @@ const CONFIG = {
   phone: "+91XXXXXXXXXX",
   whatsapp: "91XXXXXXXXXX",
   email: "riyankainat@gmail.com",
-  whatsappMessage: "Hello Dreams Verseas, I would like to know more about studying abroad."
+  whatsappMessage: "Hello Dreams Overseas, I would like to know more about studying abroad."
 };
 
 /* =====================================================
@@ -46,19 +46,24 @@ const WHY_US = [
 ];
 
 const UNIVERSITIES = [
-  { name: "Placeholder University 1", country: "Australia", degree: "Master's", course: "Computer Science", programs: "MSc Computer Science, MSc Data Science" },
-  { name: "Placeholder University 2", country: "Canada", degree: "Bachelor's", course: "Business", programs: "BBA, BCom" },
-  { name: "Placeholder University 3", country: "UK", degree: "Master's", course: "Engineering", programs: "MEng, MSc Engineering Management" },
-  { name: "Placeholder University 4", country: "USA", degree: "Master's", course: "Data Science", programs: "MS Data Science, MS Analytics" },
-  { name: "Placeholder University 5", country: "Germany", degree: "Bachelor's", course: "Engineering", programs: "BEng Mechanical, BEng Electrical" },
-  { name: "Placeholder University 6", country: "Ireland", degree: "Diploma", course: "Management", programs: "PG Diploma Management" }
+  { name: "University of Sydney", country: "Australia", degree: "Master's", course: "Computer Science", programs: "Master of Computer Science, Master of Data Science", logo: "sydney.edu.au" },
+  { name: "University of Melbourne", country: "Australia", degree: "Bachelor's", course: "Business", programs: "Bachelor of Commerce, Bachelor of Business", logo: "unimelb.edu.au" },
+  { name: "York University", country: "Canada", degree: "Bachelor's", course: "Business", programs: "Bachelor of Commerce, Bachelor of Business Administration", logo: "yorku.ca" },
+  { name: "University of Toronto", country: "Canada", degree: "Master's", course: "Data Science", programs: "Master of Data Science, Master of Management Analytics", logo: "utoronto.ca" },
+  { name: "University of Manchester", country: "UK", degree: "Master's", course: "Engineering", programs: "MSc Mechanical Engineering, MSc Engineering Project Management", logo: "manchester.ac.uk" },
+  { name: "Arizona State University", country: "USA", degree: "Master's", course: "Data Science", programs: "MS Data Science, MS Business Analytics", logo: "asu.edu" },
+  { name: "RWTH Aachen University", country: "Germany", degree: "Bachelor's", course: "Engineering", programs: "BSc Mechanical Engineering, BSc Electrical Engineering", logo: "rwth-aachen.de" },
+  { name: "Trinity College Dublin", country: "Ireland", degree: "Diploma", course: "Management", programs: "Professional Diploma in Management, Diploma in Business", logo: "tcd.ie" },
+  { name: "University of Auckland", country: "New Zealand", degree: "Master's", course: "Computer Science", programs: "Master of Information Technology, Master of Data Science", logo: "auckland.ac.nz" }
 ];
-/* Sample placeholder data — replace with real university records */
 
 const TESTIMONIALS = [
-  { name: "Aarav Sharma", course: "Master's in Computer Science", uni: "United Kingdom", quote: "The guidance made a confusing process feel structured and manageable." },
-  { name: "Priya Nair", course: "Bachelor's in Business", uni: "Canada", quote: "I finally understood which course and university actually fit my goals." },
-  { name: "Rohan Mehta", course: "Master's in Data Science", uni: "Germany", quote: "Every step, from documents to visa guidance, was explained clearly." }
+  { name: "Aarav Sharma", course: "Master's in Computer Science", uni: "United Kingdom", quote: "The guidance made a confusing process feel structured and manageable.", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80" },
+  { name: "Priya Nair", course: "Bachelor's in Business", uni: "Canada", quote: "I finally understood which course and university actually fit my goals.", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80" },
+  { name: "Rohan Mehta", course: "Master's in Data Science", uni: "Germany", quote: "Every step, from documents to visa guidance, was explained clearly.", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80" },
+  { name: "Ananya Kapoor", course: "Master's in Project Management", uni: "Australia", quote: "The team helped me compare my options and choose a course with confidence.", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&q=80" },
+  { name: "Riyan Kainat", course: "Bachelor's in Engineering", uni: "Ireland", quote: "The application process felt much easier with clear, timely support at every stage.", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&q=80" },
+  { name: "Meera Iyer", course: "Master's in Marketing", uni: "United States", quote: "I received practical advice that helped me prepare for my next step abroad.", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&q=80" }
 ];
 /* Placeholder testimonials — replace with verified student stories */
 
@@ -108,7 +113,6 @@ if (destGrid) {
     <a href="#contact" class="dest-card reveal">
       <img src="${d.img}" alt="${d.name}" loading="lazy">
       <div class="body">
-        <div class="flag">${d.flag}</div>
         <h3>${d.name}</h3>
         <p>${d.desc}</p>
         <span class="explore">Explore ${d.name} →</span>
@@ -163,7 +167,7 @@ function renderUniversities() {
   if (!uniGrid) return;
   uniGrid.innerHTML = UNIVERSITIES.map(u => `
     <div class="uni-card reveal" data-country="${u.country}" data-degree="${u.degree}" data-course="${u.course}">
-      <div class="logo-box">${u.name.charAt(0)}</div>
+      <div class="logo-box"><img class="uni-logo" src="https://www.google.com/s2/favicons?domain=${u.logo}&sz=128" alt="${u.name} logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">${u.name.charAt(0)}</span></div>
       <div class="country">${u.country}</div>
       <h3>${u.name}</h3>
       <p class="programs">${u.programs}</p>
@@ -207,10 +211,11 @@ if (testiTrack) {
   testiTrack.innerHTML = TESTIMONIALS.map(t => `
     <div class="testi-slide">
       <div class="testi-card">
+        <img class="avatar" src="${t.image}" alt="${t.name}" loading="lazy">
+        <div class="rating" aria-label="5 out of 5 stars">★★★★★</div>
         <blockquote>"${t.quote}"</blockquote>
         <div class="name">${t.name}</div>
         <div class="meta">${t.course} · ${t.uni}</div>
-        <span class="placeholder-tag">Placeholder testimonial — in development</span>
       </div>
     </div>`).join("");
 
