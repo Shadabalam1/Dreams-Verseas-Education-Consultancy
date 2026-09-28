@@ -3,7 +3,7 @@
 ===================================================== */
 const CONFIG = {
   phone: "+919117117463",
-  whatsapp: "91XXXXXXXXXX",
+  whatsapp: "919117117463",
   email: "riyankainat@gmail.com",
   whatsappMessage: "Hello Dreams Overseas, I would like to know more about studying abroad."
 };
