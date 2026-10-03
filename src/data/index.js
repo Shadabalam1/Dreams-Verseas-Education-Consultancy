@@ -22,13 +22,22 @@ export const DESTINATIONS = [
   { name: "United States", flag: "🇺🇸", desc: "A vast range of courses and campuses across the USA.", img: "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&w=900&q=60" }
 ];
 
-export const SERVICES = [
-  ["🎯", "Career & Course Counselling", "Help students understand course options according to their academic background and goals."],
-  ["🏛️", "University Selection", "Assist students in exploring suitable university options."],
-  ["📝", "Application Assistance", "Support students through the application preparation process."],
-  ["📄", "Documentation Guidance", "Help students understand application-related documentation requirements."],
-  ["🛂", "Visa Guidance", "Provide guidance around the student visa application process."],
-  ["🧳", "Pre-Departure Guidance", "Help students prepare for their transition to studying abroad."]
+export const EDUCATION_SERVICES = [
+  ["🎯", "Career & Course Counselling", "Discover the right course aligned with your academic background and career goals."],
+  ["🏛️", "University Selection", "We help you shortlist universities that match your profile and destination preferences."],
+  ["📝", "Application & Admission", "End-to-end support for your university applications, ensuring timely submissions."],
+  ["🎓", "Scholarship Guidance", "Assistance in finding and applying for available scholarships to ease your financial burden."],
+  ["🛂", "Student Visa Processing", "Step-by-step guidance for your student visa application and documentation."],
+  ["🧳", "Pre-Departure Briefing", "Essential tips and information to prepare you for travel and life abroad."]
+];
+
+export const TOURIST_VISA_SERVICES = [
+  ["✈️", "Tourist Visa Consultation", "Expert advice on selecting the right visa type and understanding requirements."],
+  ["📄", "Documentation Assistance", "Thorough review and preparation of your visa documents and cover letters."],
+  ["📅", "Appointment Booking", "Hassle-free scheduling of your biometrics and visa interview appointments."],
+  ["🏨", "Travel Itinerary Planning", "Assistance with crafting a realistic travel itinerary required for visa applications."],
+  ["💼", "Interview Preparation", "Mock sessions and tips to help you confidently face visa interviews if required."],
+  ["🌍", "Global Destinations", "Specialized visa assistance for USA, UK, Canada, Australia, Europe, and more."]
 ];
 
 export const PROCESS_STEPS = ["Profile Assessment", "Course & University Selection", "Application Preparation", "Offer & Documentation", "Visa Guidance", "Pre-Departure Support"];
@@ -51,7 +60,10 @@ export const UNIVERSITIES = [
   ["Arizona State University", "USA", "Master's", "Data Science", "MS Data Science, MS Business Analytics", "asu.edu"],
   ["RWTH Aachen University", "Germany", "Bachelor's", "Engineering", "BSc Mechanical Engineering, BSc Electrical Engineering", "rwth-aachen.de"],
   ["Trinity College Dublin", "Ireland", "Diploma", "Management", "Professional Diploma in Management, Diploma in Business", "tcd.ie"],
-  ["University of Auckland", "New Zealand", "Master's", "Computer Science", "Master of Information Technology, Master of Data Science", "auckland.ac.nz"]
+  ["University of Auckland", "New Zealand", "Master's", "Computer Science", "Master of Information Technology, Master of Data Science", "auckland.ac.nz"],
+  ["Stanford University", "USA", "Master's", "Computer Science", "MS in Computer Science, MBA", "stanford.edu"],
+  ["University of Oxford", "UK", "Bachelor's", "Business", "BA in Economics and Management", "ox.ac.uk"],
+  ["National University of Singapore", "Singapore", "Master's", "Engineering", "MSc in Civil Engineering, MSc in Systems Engineering", "nus.edu.sg"]
 ];
 
 export const TESTIMONIALS = [
@@ -69,7 +81,8 @@ export const FAQS = [
   ["How do I choose the right course?", "We assess your academic background, interests and goals to help you explore suitable course options."],
   ["How do I choose a university?", "We help you compare universities based on your course interest, budget and preferences."],
   ["What is the application process?", "It generally includes profile assessment, course and university selection, application preparation, and submission of documentation."],
-  ["Do you provide visa guidance?", "Yes, we provide guidance around the student visa application process."],
-  ["When should I start my application?", "It's best to start as early as possible, ideally several months before your intended intake."],
-  ["How can I book counselling?", "You can book a free counselling session through our contact page, WhatsApp, or by calling us directly."]
+  ["Do you provide visa guidance?", "Yes, we provide expert guidance for both student visas and tourist visas."],
+  ["When should I start my application?", "It's best to start as early as possible, ideally several months before your intended intake or travel dates."],
+  ["How can I book counselling or visa assistance?", "You can book a free session through our contact page, WhatsApp, or by calling us directly."],
+  ["Do you provide tourist visa services?", "Yes, we offer complete assistance for tourist visas to various countries, ensuring a smooth and hassle-free process."]
 ];

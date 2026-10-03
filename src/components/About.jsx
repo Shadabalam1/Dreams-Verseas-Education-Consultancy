@@ -11,9 +11,9 @@ export default function About() {
         <div className="reveal">
           <span className="eyebrow">About Dreams Overseas</span>
           <h2>Your journey. Your future. Our guidance.</h2>
-          <p>Dreams Overseas Education Consultancy helps students explore international education opportunities and navigate their study-abroad journey with structured guidance and personalized support.</p>
+          <p>Dreams Overseas helps students explore international education opportunities and provides comprehensive tourist visa assistance for global travelers. We navigate your journey with structured guidance and personalized support.</p>
           <ul className="feature-list">
-            {["Personalized Counselling", "Destination Guidance", "Application Support"].map(item => (
+            {["Study Abroad Counselling", "Tourist Visa Assistance", "Application Support"].map(item => (
               <li key={item}><span className="dot"></span>{item}</li>
             ))}
           </ul>

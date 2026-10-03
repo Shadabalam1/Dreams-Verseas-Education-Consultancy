@@ -15,8 +15,8 @@ export default function Footer() {
       <div className="container">
         <div className="grid footer-grid">
           <div>
-            <img src="/DREAMS%20Banner.png" alt="Dreams Overseas Education Consultancy banner" className="footer-banner" />
-            <p className="tagline">Building a brighter tomorrow.</p>
+            <img src="/DREAMS%20Banner.png" alt="Dreams Overseas Education & Visa Consultancy banner" className="footer-banner" />
+            <p className="tagline">Building brighter futures and enabling global travel.</p>
             <div className="social-row">
               {SOCIAL_LINKS.map(item => <a href="#" aria-label={item.name} key={item.name}>{item.icon}</a>)}
             </div>
@@ -35,7 +35,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 Dreams Overseas Education Consultancy. All Rights Reserved.</span>
+          <span>© 2026 Dreams Overseas Education & Visa Consultancy. All Rights Reserved.</span>
           <div className="links">
             <Link to="/contact">Privacy Policy</Link>
             <Link to="/contact">Terms &amp; Conditions</Link>

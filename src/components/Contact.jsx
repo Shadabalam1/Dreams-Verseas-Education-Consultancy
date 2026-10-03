@@ -4,7 +4,7 @@ import { CONFIG } from "../data";
 
 export default function Contact() {
   const [status, setStatus] = useState("");
-  const [form, setForm] = useState({ name: "", email: "", phone: "", country: "", qualification: "", intake: "", course: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", serviceType: "", country: "", qualification: "", intake: "", course: "", message: "" });
   
   const update = useCallback(event => setForm(current => ({ ...current, [event.target.name]: event.target.value })), []);
   
@@ -23,7 +23,7 @@ export default function Contact() {
       const result = await response.json(); 
       if (!response.ok || !result.success) throw new Error(); 
       setStatus("Thank you! Your enquiry has been sent successfully."); 
-      setForm({ name: "", email: "", phone: "", country: "", qualification: "", intake: "", course: "", message: "" }); 
+      setForm({ name: "", email: "", phone: "", serviceType: "", country: "", qualification: "", intake: "", course: "", message: "" }); 
     } catch { 
       setStatus("Unable to send right now. Please try again or email riyankainat@gmail.com directly."); 
     }
@@ -35,6 +35,9 @@ export default function Contact() {
         <div className="contact-info reveal">
           <span className="eyebrow">Get In Touch</span>
           <h2 style={{ marginBottom: "1.4rem" }}>Speak with a counsellor</h2>
+          <p style={{ marginBottom: "2.2rem", fontSize: "0.95rem" }}>
+            Ready to take the next step towards your international education? Our expert counsellors are here to provide personalized guidance, answer your queries, and help you choose the right path for your dream career.
+          </p>
           <div className="info-row">
             <div className="ic">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -53,6 +56,17 @@ export default function Contact() {
             </div>
             <div><strong>Office</strong><span>Office Address Here</span></div>
           </div>
+          <div style={{ marginTop: "2.8rem", paddingTop: "1.8rem", borderTop: "1px solid rgba(23,35,43,0.08)" }}>
+            <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.15rem", marginBottom: "1.1rem" }}>Operating Hours</h3>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px", fontSize: "0.92rem" }}>
+              <span style={{ color: "var(--dark)", fontWeight: "600" }}>Monday - Friday</span>
+              <span>09:30 AM - 06:30 PM</span>
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.92rem" }}>
+              <span style={{ color: "var(--dark)", fontWeight: "600" }}>Saturday</span>
+              <span>10:00 AM - 04:00 PM</span>
+            </div>
+          </div>
         </div>
         <form className="enquiry-form reveal" onSubmit={submit}>
           <div className="form-row">
@@ -62,18 +76,28 @@ export default function Contact() {
           <div className="form-row">
             <Field label="Phone Number *" name="phone" value={form.phone} onChange={update} />
             <div className="field">
-              <label htmlFor="country">Preferred Country</label>
-              <select id="country" name="country" value={form.country} onChange={update}>
-                <option value="">Select a country</option>
-                {["Australia", "Canada", "UK", "USA", "Germany", "Ireland", "New Zealand"].map(item => <option key={item}>{item}</option>)}
+              <label htmlFor="serviceType">Service Required *</label>
+              <select id="serviceType" name="serviceType" value={form.serviceType} onChange={update} required>
+                <option value="">Select a service</option>
+                <option>Study Abroad Consultant</option>
+                <option>Tourist Visa Assistance</option>
               </select>
             </div>
           </div>
           <div className="form-row">
-            <Field label="Highest Qualification" name="qualification" placeholder="e.g. Bachelor's in Computer Science" value={form.qualification} onChange={update} />
-            <Field label="Preferred Intake" name="intake" placeholder="e.g. Fall 2027" value={form.intake} onChange={update} />
+            <div className="field">
+              <label htmlFor="country">Preferred Country</label>
+              <select id="country" name="country" value={form.country} onChange={update}>
+                <option value="">Select a country</option>
+                {["Australia", "Canada", "UK", "USA", "Germany", "Ireland", "New Zealand", "Europe (Schengen)", "Other"].map(item => <option key={item}>{item}</option>)}
+              </select>
+            </div>
+            <Field label="Highest Qualification (Optional for Visa)" name="qualification" placeholder="e.g. Bachelor's in CS" value={form.qualification} onChange={update} />
           </div>
-          <Field label="Interested Course" name="course" placeholder="e.g. MSc Data Science" value={form.course} onChange={update} />
+          <div className="form-row">
+            <Field label="Preferred Intake / Travel Date" name="intake" placeholder="e.g. Fall 2027 or Dec 2026" value={form.intake} onChange={update} />
+            <Field label="Interested Course (Optional for Visa)" name="course" placeholder="e.g. MSc Data Science" value={form.course} onChange={update} />
+          </div>
           <div className="field">
             <label htmlFor="message">Message</label>
             <textarea id="message" name="message" rows="3" value={form.message} onChange={update} />

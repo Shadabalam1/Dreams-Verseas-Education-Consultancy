@@ -49,9 +49,9 @@ export default function Hero() {
       </div>
 
       <div className="container hero-content" style={{ position: "relative", zIndex: 1 }}>
-        <span className="eyebrow">Education Consultancy</span>
-        <h1>Turn your study abroad dreams into global opportunities</h1>
-        <p>Expert guidance for students planning their international education journey — from choosing the right course to preparing for departure.</p>
+        <span className="eyebrow">Education & Visa Consultancy</span>
+        <h1>Turn your travel and study abroad dreams into global opportunities</h1>
+        <p>Expert guidance for students planning their international education journey, and complete assistance for tourists exploring the world.</p>
         <div className="hero-ctas">
           <Link to="/contact" className="btn btn-primary">Book Free Counselling <span className="arrow">→</span></Link>
           <Link to="/destinations" className="btn btn-outline">Explore Destinations</Link>
@@ -59,7 +59,7 @@ export default function Hero() {
         <div className="hero-trust">
           <span>Personalized Guidance</span>
           <span>Global Destinations</span>
-          <span>Student-Focused Support</span>
+          <span>Student & Visa Support</span>
         </div>
       </div>
     </section>
