@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const VIDEOS = [
   "https://videos.pexels.com/video-files/36248449/15372583_3840_2160_30fps.mp4",
@@ -52,8 +53,8 @@ export default function Hero() {
         <h1>Turn your study abroad dreams into global opportunities</h1>
         <p>Expert guidance for students planning their international education journey — from choosing the right course to preparing for departure.</p>
         <div className="hero-ctas">
-          <a href="/contact" className="btn btn-primary">Book Free Counselling <span className="arrow">→</span></a>
-          <a href="/destinations" className="btn btn-outline">Explore Destinations</a>
+          <Link to="/contact" className="btn btn-primary">Book Free Counselling <span className="arrow">→</span></Link>
+          <Link to="/destinations" className="btn btn-outline">Explore Destinations</Link>
         </div>
         <div className="hero-trust">
           <span>Personalized Guidance</span>

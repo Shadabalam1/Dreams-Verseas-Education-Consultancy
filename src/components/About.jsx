@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function About() { 
   return (
@@ -16,7 +17,7 @@ export default function About() {
               <li key={item}><span className="dot"></span>{item}</li>
             ))}
           </ul>
-          <a href="/about" className="btn btn-dark">Know More About Us</a>
+          <Link to="/about" className="btn btn-dark">Know More About Us</Link>
         </div>
       </div>
     </section>
