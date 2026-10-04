@@ -100,8 +100,14 @@ p {
   font-size: 0.85rem;
   letter-spacing: 0.06em;
   color: var(--accent);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 20px;
   font-weight: 600;
-  margin-bottom: 0.9rem;
+  margin-bottom: 1.2rem;
   display: inline-block;
 }
 
@@ -143,6 +149,7 @@ p {
 .btn-primary {
   background: var(--accent);
   color: var(--white);
+  border: 1.5px solid transparent;
 }
 
 .btn-primary:hover {
@@ -339,6 +346,10 @@ p {
   gap: 1.5rem;
 }
 
+.mobile-cta {
+  display: none;
+}
+
 .hamburger {
   display: none;
   position: relative;
@@ -346,6 +357,10 @@ p {
   gap: 5px;
   width: 26px;
   z-index: 1101;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .hamburger span {
@@ -365,7 +380,7 @@ p {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  z-index: 1050;
+  z-index: 1250;
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s ease;
@@ -379,17 +394,17 @@ p {
 .mobile-drawer {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
   width: 85%;
-  max-width: 400px;
+  max-width: 320px;
   background: var(--white);
   display: flex;
   flex-direction: column;
-  z-index: 1100;
-  transform: translateX(100%);
+  z-index: 1300;
+  transform: translateX(-100%);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
 }
 
 .mobile-drawer.open {
@@ -399,8 +414,8 @@ p {
 .drawer-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
+  justify-content: flex-end;
+  padding: 16px 20px;
   border-bottom: 1px solid rgba(23, 35, 43, 0.08);
 }
 
@@ -410,17 +425,24 @@ p {
 }
 
 .drawer-header .close-btn {
-  background: none;
+  background: rgba(23, 35, 43, 0.05);
   border: none;
-  font-size: 1.8rem;
   color: var(--dark);
   cursor: pointer;
-  padding: 0;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  gap: 8px;
+  width: auto;
+  height: auto;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.drawer-header .close-btn:hover {
+  background: rgba(23, 35, 43, 0.1);
+  transform: translateY(-2px);
 }
 
 .drawer-nav {
@@ -435,12 +457,20 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 0;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
+  padding: 14px 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
   color: var(--dark);
   border-bottom: 1px solid rgba(23, 35, 43, 0.05);
-  transition: color 0.3s ease;
+  opacity: 0;
+  transform: translateX(-15px);
+  transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease;
+}
+
+.mobile-drawer.open .drawer-link {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .drawer-nav .drawer-link:last-child {
@@ -542,15 +572,17 @@ p {
 
 .hero-ctas {
   display: flex;
+  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 2.6rem;
+  margin-bottom: 1.2rem;
 }
 
 .hero-trust {
   display: flex;
-  gap: 2.2rem;
+  gap: 2.0rem;
   flex-wrap: wrap;
+  padding-bottom: 0.5rem;
 }
 
 .hero-trust span {
@@ -589,7 +621,10 @@ p {
 =================================================== */
 .trust-bar {
   background: var(--primary);
-  padding: 34px 0;
+  padding: 20px 0;
+  margin-top: -2rem;
+  position: relative;
+  z-index: 10;
 }
 
 .trust-bar .grid {
@@ -955,13 +990,14 @@ p {
   background: var(--white);
   padding: 1.2rem;
   border-radius: var(--radius-m);
-  box-shadow: 0 4px 20px rgba(13,23,29,0.05);
+  box-shadow: 0 4px 20px rgba(13, 23, 29, 0.05);
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   margin-bottom: 3.5rem;
   align-items: center;
 }
+
 .filter-group {
   flex: 1;
   min-width: 180px;
@@ -969,6 +1005,7 @@ p {
   display: flex;
   align-items: center;
 }
+
 .filter-group svg {
   position: absolute;
   left: 16px;
@@ -977,11 +1014,12 @@ p {
   color: var(--muted);
   pointer-events: none;
 }
+
 .filter-group select {
   width: 100%;
   padding: 14px 18px 14px 44px;
   border-radius: var(--radius-s);
-  border: 1px solid rgba(23,35,43,0.1);
+  border: 1px solid rgba(23, 35, 43, 0.1);
   background: var(--background);
   font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
@@ -990,6 +1028,7 @@ p {
   transition: border-color .3s;
   appearance: none;
 }
+
 .filter-group select:focus {
   outline: none;
   border-color: var(--accent);
@@ -1529,6 +1568,65 @@ p {
 }
 
 /* ===================================================
+   XX. FAQ
+=================================================== */
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(23, 35, 43, 0.08);
+}
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark);
+  text-align: left;
+  transition: color 0.3s var(--ease);
+}
+
+.faq-q:hover {
+  color: var(--accent);
+}
+
+.faq-q .plus {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  transition: transform 0.4s var(--ease);
+  color: var(--accent);
+}
+
+.faq-item.open .faq-q .plus {
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease), padding-bottom 0.4s var(--ease);
+}
+
+.faq-item.open .faq-a {
+  max-height: 300px;
+  padding-bottom: 24px;
+}
+
+.faq-a p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* ===================================================
    20. RESPONSIVE
 =================================================== */
 @media (max-width: 991px) {
@@ -1540,6 +1638,10 @@ p {
 
   .hamburger {
     display: flex;
+  }
+
+  .mobile-cta {
+    display: block;
   }
 
   .about .container,
@@ -1612,8 +1714,26 @@ p {
     height: 44px;
   }
 
+  .hero {
+    padding-top: 80px;
+    min-height: 80vh;
+  }
+
+  .hero p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
+
   .section {
-    padding: 56px 0;
+    padding: 48px 0;
+  }
+
+  .section-head {
+    margin-bottom: 2rem;
+  }
+
+  .grid {
+    gap: 1.5rem;
   }
 
   .dest-grid,
@@ -1635,6 +1755,7 @@ p {
 
   .hero-ctas {
     flex-direction: column;
+    gap: 0.8rem;
   }
 
   .form-row {

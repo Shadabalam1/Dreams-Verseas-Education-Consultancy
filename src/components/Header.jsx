@@ -9,6 +9,17 @@ const SOCIAL_LINKS = [
   { name: "YouTube", icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg> }
 ];
 
+const NAV_ICONS = {
+  "home": "🏠",
+  "about": "ℹ️",
+  "destinations": "🌍",
+  "services": "🛠",
+  "universities": "🎓",
+  "success-stories": "⭐",
+  "faq": "❓",
+  "contact": "📞"
+};
+
 export default function Header({ route }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -46,14 +57,20 @@ export default function Header({ route }) {
   return (
     <>
       <header className={`site-header${isScrolled ? " scrolled" : ""}`} id="siteHeader">
-        <div className="container">
+        <div className="container header-container">
+          <button type="button" className="hamburger" id="hamburger" aria-label="Open menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(value => !value)}>
+            <span></span><span></span><span></span>
+          </button>
+          
           <a href="/" className="logo"><img src="/DREAMS%20Banner.png" alt="Dreams Overseas Education Consultancy" className="brand-banner" /></a>
+          
           <nav className="nav-links" aria-label="Primary navigation">
             {NAV_ITEMS.map(([id, label]) => <a key={id} {...linkProps(id)} className={route === id ? "active" : ""} aria-current={route === id ? "page" : undefined}>{label}</a>)}
           </nav>
+          
           <div className="header-cta">
             <a href="/contact" className="btn btn-primary desktop-only">Book Free Counselling</a>
-            <button type="button" className="hamburger" id="hamburger" aria-label="Open menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(value => !value)}><span></span><span></span><span></span></button>
+            <a href="/contact" className="mobile-cta" aria-label="Start Your Journey" style={{ fontSize: "1.4rem", textDecoration: "none" }}>✈️</a>
           </div>
         </div>
       </header>
@@ -62,22 +79,29 @@ export default function Header({ route }) {
       
       <div className={`mobile-drawer${menuOpen ? " open" : ""}`} id="mobileDrawer">
         <div className="drawer-header">
-          <img src="/DREAMS%20Banner.png" alt="Dreams" className="brand-banner" />
-          <button type="button" className="close-btn" aria-label="Close menu" onClick={() => setMenuOpen(false)}>✕</button>
+          <button type="button" className="close-btn" aria-label="Close menu" onClick={() => setMenuOpen(false)}>
+            <span>Close</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
         </div>
         
         <div className="drawer-nav">
-          {NAV_ITEMS.map(([id, label]) => (
-            <a key={id} {...linkProps(id)} className={`drawer-link ${route === id ? "active" : ""}`} aria-current={route === id ? "page" : undefined}>
-              {label}
+          {NAV_ITEMS.map(([id, label], index) => (
+            <a key={id} {...linkProps(id)} className={`drawer-link ${route === id ? "active" : ""}`} aria-current={route === id ? "page" : undefined} style={{ transitionDelay: menuOpen ? `${index * 0.05}s` : '0s' }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <span style={{ fontSize: '1.2rem' }}>{NAV_ICONS[id]}</span>
+                {label}
+              </span>
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           ))}
         </div>
         
         <div className="drawer-footer">
-          <a {...linkProps("contact")} className="btn btn-dark drawer-btn">Book Free Counselling</a>
-          <div className="drawer-social">
+          <a {...linkProps("contact")} className="btn btn-dark drawer-btn" style={{ background: "var(--accent)", color: "var(--white)", borderColor: "var(--accent)" }}>
+            ✈️ Start Your Journey
+          </a>
+          <div className="drawer-social" style={{ marginTop: '10px' }}>
             {SOCIAL_LINKS.map(item => <a href="#" aria-label={item.name} key={item.name}>{item.icon}</a>)}
           </div>
         </div>
